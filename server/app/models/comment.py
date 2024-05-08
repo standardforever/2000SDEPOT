@@ -12,7 +12,7 @@ class Comment(db.Model, SerializerMixin):
     
     game_comment_id= db.Column(db.Integer, db.ForeignKey('games.id') )
     user_comment_id= db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    user = db.relationship('User', back_populates= 'comments')
+    # user = db.relationship('User', back_populates= 'comments')
     
     # games = db.relationship('Game', back_populates='comments')
 

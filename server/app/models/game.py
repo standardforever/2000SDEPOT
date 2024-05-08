@@ -21,7 +21,7 @@ class Game(db.Model, SerializerMixin):
     
     # comments = db.relationship('Comment', back_populates='games')
     fav_games = db.relationship('FavGames', back_populates='game')  # Updated back reference here
-    favorite_users_proxy = association_proxy('fav_games', 'user')
+    # favorite_users_proxy = association_proxy('fav_games', 'user')
     created_at = db.Column(db.DateTime, server_default= db.func.now())
 
     def to_dict(self):

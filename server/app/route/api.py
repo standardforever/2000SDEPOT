@@ -74,6 +74,7 @@ def games():
             user_id = params.get('user_id')
         new_game = Game(title=params["title"], description=params["description"],
                         release_date=params["release_date"], user_id=user_id)
+                        
         db.session.add(new_game)
         db.session.commit()
         return make_response(new_game.to_dict(), 201)
@@ -88,7 +89,9 @@ def game_by_id(id):
         }
 
     find_game = Game.query.get(id)
-    return make_response(find_game.to_dict())
+    if find_game:
+        return make_response(find_game.to_dict())
+    return {}
 
 
 @api.route('/comments', methods=['GET', 'POST'])
@@ -96,11 +99,16 @@ def all_comments():
     token = request.headers.get('Authorization')
     if not validate_jwt_token(token):
         return {
-            "error": "Incorrect credientials"
+            "error": "Incorrect credentials"
         }
 
     if request.method == 'GET':
-        comments = Comment.query.all()
+        print('ok')
+        comments = Comment.query\
+            .join(Game, Comment.game_comment_id == Game.id)\
+            .join(User, Comment.user_comment_id == User.user_id)\
+            .all()
+        
         comment_list = [comment.to_dict() for comment in comments]
         return make_response(comment_list, 200)
 
@@ -111,6 +119,7 @@ def all_comments():
             user_id = params.get('user_id')
         new_comment = Comment(title=params["title"], body=params["body"],
                               game_comment_id=params["game_comment_id"], user_comment_id=user_id)
+
         db.session.add(new_comment)
         db.session.commit()
 

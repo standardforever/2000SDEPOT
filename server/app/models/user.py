@@ -14,7 +14,7 @@ class User(db.Model, SerializerMixin):
     password_hash = db.Column(db.String, nullable =False)
     created_at = db.Column(db.DateTime, server_default= db.func.now())
 
-    comments = db.relationship('Comment', back_populates = 'user')
+    # comments = db.relationship('Comment', back_populates = 'user')
     games = db.relationship('Game', back_populates='user')
     fav_games = db.relationship('FavGames', back_populates= 'user')
     fav_games_proxy = association_proxy('fav_games', 'games')
