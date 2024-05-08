@@ -38,10 +38,13 @@ const GameLibrary = () => {
 				<label> {!isDarkMode ? "Light Mode" : "Dark Mode"}</label>
 				<ReactSwitch onChange={toggleTheme} checked={isDarkMode} />
 			</div>
-			<GameLibraryList games={games} />
 			<button>
-				<Link to={"/game/post"}>Click to Post Game</Link>
+				<Link to={"/games/post"}>Click to Post Game</Link>
 			</button>
+			<button>
+				<Link to={"/games/comments"}>Click to post a comment</Link>
+			</button>
+			<GameLibraryList games={games} />
 		</div>
 	);
 };

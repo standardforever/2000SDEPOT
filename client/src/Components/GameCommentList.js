@@ -1,24 +1,19 @@
-import GameCommentForm from "./GameCommentForm";
-
-function GameCommentList({ comments, addReply }) {
+function GameCommentList({ comments }) {
 	return (
-		<ul className="comment-list">
-			{comments.map((comment) => (
-				<li key={comment.id}>
-					<p>{comment.text}</p>
-					<GameCommentForm
-						addComment={(reply) => addReply(comment.id, reply)}
-					/>
-					<ul className="reply-list">
-						{comment.replies.map((reply) => (
-							<li key={reply.id}>
-								<p>{reply.text}</p>
-							</li>
-						))}
-					</ul>
-				</li>
-			))}
-		</ul>
+		<>
+			<h2>List of Comments</h2>
+			{Array.isArray(comments) && comments.length > 0 ? (
+				comments.map(({ title, body, game_comment_id }, index) => (
+					<div key={index}>
+						<h3>Title: {title}</h3>
+						<p>Body: {body}</p>
+						<p>GameId: {game_comment_id}</p>
+					</div>
+				))
+			) : (
+				<p>Loading...</p>
+			)}
+		</>
 	);
 }
 

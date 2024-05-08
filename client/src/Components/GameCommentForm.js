@@ -7,20 +7,17 @@ function GameCommentForm({ gameId, addComment }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await fetch(
-				"http://localhost:3500/comments/${gameId}",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						gameId: gameId,
-						text: commentText,
-						replies: [],
-					}),
-				}
-			);
+			const response = await fetch("http://127.0.0.1:5000/api/comments", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					gameId: gameId,
+					text: commentText,
+					replies: [],
+				}),
+			});
 			if (!response.ok) {
 				throw new Error("Failed to add comment");
 			}

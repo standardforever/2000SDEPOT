@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function AddNewGame() {
 	const [title, setTitle] = useState("");
@@ -59,6 +60,9 @@ function AddNewGame() {
 				/>
 				<button type="submit">Add</button>
 			</form>
+			<button>
+				<Link to={"/games"}>Back to Game Library</Link>
+			</button>
 		</div>
 	);
 }

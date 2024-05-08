@@ -1,78 +1,51 @@
 import React, { useState, useEffect } from "react";
-import GameCommentForm from "./GameCommentForm";
+import ReactSwitch from "react-switch";
+import { useTheme } from "./ThemeContext";
+import NewGameComment from "./NewGameComment";
 import GameCommentList from "./GameCommentList";
+import { Link } from "react-router-dom";
 
-function GameComments({ gameId }) {
-	const [gameComments, setGameComments] = useState([]);
+const GameLibrary = () => {
+	const { isDarkMode, toggleTheme } = useTheme();
+	const [comments, setComments] = useState([]);
+	const token =
+		"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJkZWZhdWx0X3VzZXIifQ.hWBCFTI8zh4jcMuuxoR9bUfl_PgUYh258AnH9-EhYXs";
 
 	useEffect(() => {
-		fetchComments();
+		fetchGames();
 	}, []);
 
-	// Function to fetch comments from the backend
-	const fetchComments = async () => {
+	const fetchGames = async () => {
 		try {
-			const response = await fetch("http://localhost:3500/comments");
-			if (response.ok) throw new Error("failed to fetch comments");
-			const data = await response.json();
-			setGameComments(data);
-		} catch (error) {
-			console.error("Error fetching comment", error);
-		}
-	};
-
-	// Function to add new comment
-	const addComment = async (comment) => {
-		try {
-			const response = await fetch("http://localhost:3500/comments", {
-				method: "POST",
+			const response = await fetch("http://127.0.0.1:5000/api/comments", {
+				method: "GET",
 				headers: {
-					"Content-Type": "application/json",
+					Authorization: token,
 				},
-				body: JSON.stringify(comment),
 			});
-			if (response.ok) throw new Error("failed to add comments");
 			const data = await response.json();
-			setGameComments([...gameComments, data]);
+			console.log(data);
+			setComments(data);
 		} catch (error) {
-			console.error("Error adding comment: ", error);
-		}
-	};
-
-	// Function to add a reply to a comment
-	const addReply = async (parentId, reply) => {
-		try {
-			const response = await fetch("http://localhost:3500/comments", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(reply),
-			});
-			if (response.ok) throw new Error("failed to add reply");
-			const data = await response.json();
-			// Update the comments state to include the new reply
-			const updateComments = gameComments.map((comment) => {
-				if (comment.id === parentId) {
-					return {
-						...comment,
-						replies: [...comment.replies, data],
-					};
-				}
-				return comment;
-			});
-			setGameComments(updateComments);
-		} catch (error) {
-			console.error("Error adding reply: ", error);
+			console.error("Error fetching games", error);
 		}
 	};
 
 	return (
-		<div className="comment-section">
-			<h2>Comments</h2>
-			<GameCommentForm gameId={gameId} addComment={addComment} />
-			<GameCommentList comments={gameComments} addReply={addReply} />
+		<div className={isDarkMode ? "dark-mode" : "light-mode"}>
+			<h1>Comment Section</h1>
+			<button>
+				<Link to={"/games"}>Click to go back to Game Library</Link>
+			</button>
+
+			<div className="switch">
+				<label> {!isDarkMode ? "Light Mode" : "Dark Mode"}</label>
+				<ReactSwitch onChange={toggleTheme} checked={isDarkMode} />
+			</div>
+			<NewGameComment />
+			<GameCommentList comments={comments} />
 		</div>
 	);
-}
-export default GameComments;
+};
+
+export default GameLibrary;
