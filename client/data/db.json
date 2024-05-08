@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "id": "1",
+      "gameId": "1",
+      "text": "This game is amazing!",
+      "replies": [
+        {
+          "id": "1",
+          "text": "I agree!"
+        },
+        {
+          "id": "2",
+          "text": "Me too!"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "gameId": "1",
+      "text": "I didn't like this game.",
+      "replies": []
+    },
+    {
+      "id": "3",
+      "gameId": "2",
+      "text": "Can't wait to play this game!",
+      "replies": []
+    },
+    {
+      "id": "3342",
+      "text": "nice",
+      "replies": []
+    },
+    {
+      "id": "3342",
+      "text": "nice",
+      "replies": []
+    },
+    {
+      "id": "1537",
+      "text": "",
+      "replies": []
+    },
+    {
+      "id": "a7e2",
+      "text": "",
+      "replies": []
+    },
+    {
+      "id": "a7e2",
+      "text": "",
+      "replies": []
+    },
+    {
+      "id": "e481",
+      "text": "",
+      "replies": []
+    },
+    {
+      "id": "e481",
+      "text": "",
+      "replies": []
+    },
+    {
+      "id": "f94e",
+      "text": "",
+      "replies": []
+    },
+    {
+      "id": "f94e",
+      "text": "",
+      "replies": []
+    },
+    {
+      "id": "4056",
+      "text": "vvv",
+      "replies": []
+    },
+    {
+      "id": "4056",
+      "text": "vvv",
+      "replies": []
+    }
+  ]
+}
