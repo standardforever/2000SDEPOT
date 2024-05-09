@@ -1,0 +1,46 @@
+.About {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+  height: auto;
+  text-align: center;
+}
+
+.About h1 {
+ color: #007bff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.About h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+span {
+    color: #007bff;
+}
+.About p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.About button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.About button:hover {
+  background-color: #0056b3;
+}
+
+.About button a {
+  text-decoration: none;
+  color: inherit;
+}

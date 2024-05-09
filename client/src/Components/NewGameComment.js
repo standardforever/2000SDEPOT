@@ -35,8 +35,7 @@ function NewGameComment() {
 	};
 
 	return (
-		<div>
-			<h2></h2>
+		<div className="container">
 			<form onSubmit={handleSubmit}>
 				<input
 					placeholder="Title"
@@ -58,7 +57,12 @@ function NewGameComment() {
 					rows={"5"}
 					cols={"33"}
 				/>
-				<button type="submit">Add</button>
+				<div style={{ display: "flex" }}>
+					<button>
+						<Link to={"/games"}>Back to Game Library</Link>
+					</button>
+					<button type="submit">Add</button>
+				</div>
 			</form>
 		</div>
 	);

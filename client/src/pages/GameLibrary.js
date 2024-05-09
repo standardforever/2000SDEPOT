@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ReactSwitch from "react-switch";
-import { useTheme } from "./ThemeContext";
-import GameLibraryList from "./GameLibraryList";
+import { useTheme } from "../Components/ThemeContext";
+import GameLibraryList from "../Components/GameLibraryList";
 import { Link } from "react-router-dom";
+import "./style/gamelibrary.css";
 
 const GameLibrary = () => {
 	const { isDarkMode, toggleTheme } = useTheme();
@@ -31,20 +32,25 @@ const GameLibrary = () => {
 	};
 
 	return (
-		<div className={isDarkMode ? "dark-mode" : "light-mode"}>
-			<h1>GameLibrary</h1>
-
-			<div className="switch">
-				<label> {!isDarkMode ? "Light Mode" : "Dark Mode"}</label>
-				<ReactSwitch onChange={toggleTheme} checked={isDarkMode} />
+		<div className="game">
+			<div className={isDarkMode ? "dark-mode" : "light-mode"}>
+				<h1>GameLibrary</h1>
+				{/* <div className="switch">
+					<label> {!isDarkMode ? "Light Mode" : "Dark Mode"}</label>
+					<ReactSwitch onChange={toggleTheme} checked={isDarkMode} />
+				</div> */}
+				<div className="game-button">
+					<button>
+						<Link to={"/games/post"}>Click to Post Game</Link>
+					</button>
+					<button>
+						<Link to={"/games/comments"}>
+							Click to post a comment
+						</Link>
+					</button>
+				</div>
+				<GameLibraryList games={games} />
 			</div>
-			<button>
-				<Link to={"/games/post"}>Click to Post Game</Link>
-			</button>
-			<button>
-				<Link to={"/games/comments"}>Click to post a comment</Link>
-			</button>
-			<GameLibraryList games={games} />
 		</div>
 	);
 };

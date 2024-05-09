@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./style/addnewgame.css";
 
 function AddNewGame() {
 	const [title, setTitle] = useState("");
@@ -35,7 +36,7 @@ function AddNewGame() {
 	};
 
 	return (
-		<div>
+		<div className="container">
 			<h2>Fill the information to post a new game</h2>
 			<form onSubmit={handleSubmit}>
 				<input

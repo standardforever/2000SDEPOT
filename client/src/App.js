@@ -1,14 +1,13 @@
 import logo from './logo.svg';
 import React, { useState } from "react";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import Auth from "./Components/Auth";
+import { Outlet, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./Components/ThemeContext";
-import GameLibrary from "./Components/GameLibrary";
-import GameComments from "./Components/GameComments";
-import FavGames from "./Components/FavGames";
-import NewGameComment from "./Components/NewGameComment";
-import ErrorPage from "./Components/ErrorPage";
-import AddNewGame from "./Components/AddNewGame";
+import GameLibrary from "./pages/GameLibrary";
+import GameComments from "./pages/GameComments";
+import ErrorPage from "./pages/ErrorPage";
+import AddNewGame from "./pages/AddNewGame";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage";
 
 export function App() {
 	const [logInUser, setLogInUser] = useState(null);
@@ -17,14 +16,14 @@ export function App() {
 		<div className="app">
 			<ThemeProvider>
 				<Routes>
+					<Route exact path="/" element={<LandingPage />} />
 					<Route
-						exact
-						path="/"
+						path="/login"
 						element={
 							!!logInUser ? (
 								<Outlet />
 							) : (
-								<Auth setUser={setLogInUser} />
+								<LoginPage setUser={setLogInUser} />
 							)
 						}
 					/>

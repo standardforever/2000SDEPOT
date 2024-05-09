@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactSwitch from "react-switch";
-import { useTheme } from "./ThemeContext";
-import NewGameComment from "./NewGameComment";
-import GameCommentList from "./GameCommentList";
+import { useTheme } from "../Components/ThemeContext";
+import NewGameComment from "../Components/NewGameComment";
+import GameCommentList from "../Components/GameCommentList";
 import { Link } from "react-router-dom";
 
 const GameLibrary = () => {
@@ -33,15 +33,19 @@ const GameLibrary = () => {
 
 	return (
 		<div className={isDarkMode ? "dark-mode" : "light-mode"}>
-			<h1>Comment Section</h1>
-			<button>
-				<Link to={"/games"}>Click to go back to Game Library</Link>
-			</button>
+			<h1
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+				}}>
+				Comment Section
+			</h1>
 
-			<div className="switch">
+			{/* <div className="switch">
 				<label> {!isDarkMode ? "Light Mode" : "Dark Mode"}</label>
 				<ReactSwitch onChange={toggleTheme} checked={isDarkMode} />
-			</div>
+			</div> */}
 			<NewGameComment />
 			<GameCommentList comments={comments} />
 		</div>
