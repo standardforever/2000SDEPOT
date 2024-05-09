@@ -7,8 +7,16 @@ function ErrorPage() {
 	const { isDarkMode, toggleTheme } = useTheme();
 	return (
 		<div className={isDarkMode ? "dark-mode" : "light-mode"}>
-			<section style={{ textAlign: "center" }}>
-				<h1 className="404">404</h1>
+			<section
+				style={{
+					textAlign: "center",
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "center",
+					alignItems: "center",
+				}}
+				className="container">
+				<h1 className="h404">404</h1>
 				<h2>OPPS! PAGE NOT FOUND</h2>
 				<p>
 					Sorry, the page you're attempting to access doesn't exist.

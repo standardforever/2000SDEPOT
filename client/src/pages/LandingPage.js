@@ -25,7 +25,7 @@ const LandingPage = () => {
 					passion for the games that defined a generation."
 				</p>
 				<button>
-					<Link to={"/login"}>Click Here to Continue</Link>
+					<Link to={"/login"}>Click to Continue</Link>
 				</button>
 				<div className="switch">
 					<label> {isDarkMode ? "Dark-mode" : "Light-mode"}</label>
